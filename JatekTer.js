@@ -10,8 +10,8 @@ export class JatekTer {
         this.jatekInditas();
 
         window.addEventListener("kattintas", (event) => {
-            const kattintottIndex = event.detail.index;
-            this.szomszedokKezelese(kattintottIndex);
+            const kattintott = event.detail.index;
+            this.szomszedokKezelese(kattintott);
             this.gyozelemEllenorzes();
         });
 
@@ -22,10 +22,6 @@ export class JatekTer {
         this.szuloElem.innerHTML = "";
         this.lampak = [];
         this.uzenetElem.innerText = "";
-        
-        this.szuloElem.style.display = "grid";
-        this.szuloElem.style.gridTemplateColumns = `repeat(${this.meret}, 100px)`;
-        this.szuloElem.style.gap = "5px";
 
         for (let i = 0; i < this.meret * this.meret; i++) {
             const kezdoAllapot = Math.random() < 0.2;
@@ -38,7 +34,6 @@ export class JatekTer {
         const sor = Math.floor(id / this.meret);
         const oszlop = id % this.meret;
 
-        // Lista a változtatandó indexekről
         const celpontok = [id];
         if (sor > 0) celpontok.push(id - this.meret);
         if (sor < this.meret - 1) celpontok.push(id + this.meret);
